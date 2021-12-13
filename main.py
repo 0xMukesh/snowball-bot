@@ -15,6 +15,7 @@ import pymongo
 from pymongo import MongoClient
 import random
 import discordSuperUtils
+from typing import List
 
 
 # Getting the token from the config.json file
@@ -23,6 +24,12 @@ with open('config.json', 'r') as f:
 TOKEN = config['token']
 URL = config['url']
 
+
+class MyCommandGenerator(discordSuperUtils.CommandResponseGenerator):
+    def generate(self, invalid_command: str, suggestion: List[str]) -> str:
+        return f"<:shipit:919823557796696174> You know that command doesn't exist, so don't distrub me\nTry using `{suggestion[0]}`"
+
+
 # Bot's global configuration
 client = commands.Bot(command_prefix="-")
 client.remove_command('help')
@@ -30,6 +37,7 @@ client.current_users = set()
 client.counter = {}  # This is the dict which stores the number of snowball the user have
 # This is the list which returns random output, which decides whether it's a hit or not
 client.snowball = ["hit", "miss", "miss"]
+discordSuperUtils.CommandHinter(client, MyCommandGenerator())
 
 # MongoDB configuration
 cluster = MongoClient(URL)
@@ -55,11 +63,11 @@ async def on_command_error(ctx, error):
         embed = discord.Embed(
             title='', description="You already scooped up all the snow! Let it fall for about {:.2f} seconds, then you'll be able to make another snowball. <:shipit:919823557796696174>".format(error.retry_after), color=discord.Color.from_rgb(254, 1, 0))
         await ctx.send(embed=embed)
-    elif isinstance(error, CommandNotFound):
-        await ctx.send("<:shipit:919823557796696174> You know that command doesn't exist, so don't distrub me")
     elif isinstance(error, MissingRequiredArgument):
         embed = discord.Embed(
             title='', description='You sure that you entered all the required arguments? <:shipit:919823557796696174>', color=discord.Color.from_rgb(254, 1, 0))
+    elif isinstance(error, CommandNotFound):
+        return
     else:
         raise error
 
