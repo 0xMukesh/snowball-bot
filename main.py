@@ -10,9 +10,12 @@ from discord.ext.commands.errors import CommandNotFound, CommandOnCooldown, Miss
 from discord.utils import get
 import json
 import sys
+from discord_components.component import ButtonStyle
 import pymongo
 from pymongo import MongoClient
 import random
+import discordSuperUtils
+
 
 # Getting the token from the config.json file
 with open('config.json', 'r') as f:
@@ -205,5 +208,24 @@ async def stats(ctx, user: discord.Member = None):
             await ctx.send(embed=embed)
         except TypeError:  # The user isn't there in the database
             await ctx.send("That player doesn't have any stats <:catAngry:919806075606286386>")
+
+
+@client.command()
+async def leaderboard(ctx):
+    doc = collection.find().sort("hit", -1)
+    embed_descp = [
+        f"<@{x['_id']}>\n**Hits**: {x['hit']}\n**Misses** : {x['miss']}\n**KO's**: {x['ko']}" for x in doc
+    ]
+
+    await discordSuperUtils.PageManager(
+        ctx,
+        discordSuperUtils.generate_embeds(
+            embed_descp,
+            title=f"Snowball leaderboard for {ctx.guild}",
+            fields=10,
+            description=f"Check who have the most hits",
+            color=discord.Color.from_rgb(89, 99, 242)
+        )
+    ).run()
 
 client.run(TOKEN)
