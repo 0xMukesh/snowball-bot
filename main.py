@@ -73,7 +73,8 @@ async def collect(ctx):
 
         embed = discord.Embed(
             description="Slapping on your warmest pair of gloves, you gathered some snow and started shaping some snowballs. You now have 1 of them—let 'em fly!", color=discord.Color.from_rgb(89, 100, 242))
-        embed.set_image(url="https://images-ext-2.discordapp.net/external/9wFyeX9YI7rcMhySqy3idG0oWxohrYPKNYPbHrF8S60/https/media.discordapp.net/attachments/911663923592298547/911664013174255636/snowsgiving_bot_2021_throw.png?width=409&height=409")
+        embed.set_image(
+            url="https://images-ext-1.discordapp.net/external/E9ROIdIhkUg5m5OJrxncIKnjM8Gqe4FPcuzi-Bvh_hk/https/c.tenor.com/NBqwJNBaSXUAAAAC/playing-with-snow-piu-piu.gif?width=400&height=225")
         await ctx.send(embed=embed)
     else:
         author = ctx.message.author.id
@@ -83,7 +84,7 @@ async def collect(ctx):
 
         embed = discord.Embed(
             description=f"Slapping on your warmest pair of gloves, you gathered some snow and started shaping some snowballs. You now have {client.counter[author]} of them—let 'em fly!", color=discord.Color.from_rgb(89, 100, 242))
-        embed.set_image(url="https://images-ext-2.discordapp.net/external/9wFyeX9YI7rcMhySqy3idG0oWxohrYPKNYPbHrF8S60/https/media.discordapp.net/attachments/911663923592298547/911664013174255636/snowsgiving_bot_2021_throw.png?width=409&height=409")
+        embed.set_image(url="https://images-ext-1.discordapp.net/external/E9ROIdIhkUg5m5OJrxncIKnjM8Gqe4FPcuzi-Bvh_hk/https/c.tenor.com/NBqwJNBaSXUAAAAC/playing-with-snow-piu-piu.gif?width=400&height=225")
         await ctx.send(embed=embed)
 
 
@@ -111,7 +112,7 @@ async def throw(ctx, user: discord.Member = None):
                             embed = discord.Embed(
                                 description=f"<@{user.id}> wasn't even paying attention to chat… and they got smacked by a snowball anyways! Hey <@{user.id}> — use `/collect`, then `/throw` to get 'em back!", color=discord.Color.from_rgb(97, 254, 96))
                             embed.set_image(
-                                url="https://images-ext-1.discordapp.net/external/GC42_K86CVtl68ZTxZAugLYn9toViR_WLE6M_pZ-kXM/https/media.discordapp.net/attachments/911663923592298547/911664013434310717/snowsgiving_bot_2021_hit.png?width=409&height=409")
+                                url="https://media.giphy.com/media/W5TBt9C4VVWw2BOOjP/giphy.gif")
                             await ctx.send(embed=embed)
                             client.counter[ctx.message.author.id] -= 1
                             post_author = {"_id": ctx.author.id,
@@ -124,7 +125,7 @@ async def throw(ctx, user: discord.Member = None):
                             embed = discord.Embed(
                                 description="You throw a snowball with all your might, just for it to land a few inches from your feet. You missed! Maybe you should work on your arm strength a bit...", color=discord.Color.from_rgb(255, 167, 1))
                             embed.set_image(
-                                url="https://images-ext-1.discordapp.net/external/82wiO0AeG2hZccGEj_x20JDGzpMn9xdxoBQ3DZ7dkMI/https/media.discordapp.net/attachments/911663923592298547/911664012855500890/snowsgiving_bot_2021_miss.png?width=409&height=409")
+                                url="https://media.giphy.com/media/ukSGgGljsKRXdiHb0h/giphy.gif")
                             await ctx.send(embed=embed)
                             client.counter[ctx.message.author.id] -= 1
                             post_author = {"_id": ctx.author.id,
@@ -136,7 +137,7 @@ async def throw(ctx, user: discord.Member = None):
                             embed = discord.Embed(
                                 description=f"<@{user.id}> wasn't even paying attention to chat… and they got smacked by a snowball anyways! Hey <@{user.id}> — use `/collect`, then `/throw` to get 'em back!", color=discord.Color.from_rgb(97, 254, 96))
                             embed.set_image(
-                                url="https://images-ext-1.discordapp.net/external/GC42_K86CVtl68ZTxZAugLYn9toViR_WLE6M_pZ-kXM/https/media.discordapp.net/attachments/911663923592298547/911664013434310717/snowsgiving_bot_2021_hit.png?width=409&height=409")
+                                url="https://media.giphy.com/media/W5TBt9C4VVWw2BOOjP/giphy.gif")
                             await ctx.send(embed=embed)
                             client.counter[ctx.message.author.id] -= 1
                             query_author = {"_id": ctx.author.id}
@@ -159,7 +160,7 @@ async def throw(ctx, user: discord.Member = None):
                             embed = discord.Embed(
                                 description="You throw a snowball with all your might, just for it to land a few inches from your feet. You missed! Maybe you should work on your arm strength a bit...", color=discord.Color.from_rgb(255, 167, 1))
                             embed.set_image(
-                                url="https://images-ext-1.discordapp.net/external/82wiO0AeG2hZccGEj_x20JDGzpMn9xdxoBQ3DZ7dkMI/https/media.discordapp.net/attachments/911663923592298547/911664012855500890/snowsgiving_bot_2021_miss.png?width=409&height=409")
+                                url="https://media.giphy.com/media/ukSGgGljsKRXdiHb0h/giphy.gif")
                             await ctx.send(embed=embed)
                             client.counter[ctx.message.author.id] -= 1
                             query_author = {"_id": ctx.author.id}
