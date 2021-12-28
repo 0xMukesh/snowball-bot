@@ -84,9 +84,9 @@ Please make sure you have the correct access rights and the repository exists.--
 
 ## Making a pull request
 
- On the GitHub website, navigate to your forked repo - on the top of the files section you'll notice a new section containing a `Compare & Pull Request` button!
+ On the GitHub website, navigate to this repo - on the top of the files section you'll notice a new section containing a `Compare & Pull Request` button!
 
-- Click on that button and this will load a new page, comparing the local branch in your forked repo, against the main branch in the `snowball-bot` repo. 
+- Click on that button and this will load a new page, comparing the local branch in your forked repo, against the main branch in the `snowball-bot` repo (If this settings doesn't show up you can manually enter the branches of the repos by enabling the `compare across forks` button). 
   Note: A pull request allows your changes to be merged with the original project repo.
 
 - Wait for your changes to be merged.
